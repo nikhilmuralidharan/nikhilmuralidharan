@@ -11,6 +11,11 @@ Analog/Mixed-Signal Design Engineer | Irvine, CA
 - OMNIVISION (Analog Design Engineer) — Apr 2024 → Present
 - UC San Diego (Graduate Student Researcher; Teaching Assistant for ECE 264D & ECE 166) — Jan 2023 → Apr 2024
 - Qualcomm (RF Systems Intern) — Jun 2023 → Sep 2023
+  
+## Topics I would like to Explore
+- Serdes Design
+- Data Converters
+- Phase Locked Loops
 
 ## Education
 
