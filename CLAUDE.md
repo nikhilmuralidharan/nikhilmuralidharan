@@ -2,23 +2,36 @@
 
 ## Project Overview
 
-This is a **GitHub profile repository** (`nikhilmuralidharan/nikhilmuralidharan`). It serves as a personal profile README displayed on the GitHub profile page for Nikhil Muralidharan, an Analog/Mixed-Signal Design Engineer.
+This is a **GitHub Pages personal website** and **GitHub profile repository** (`nikhilmuralidharan/nikhilmuralidharan`). It serves dual purposes:
+
+1. The `README.md` is displayed on the GitHub profile page
+2. The `index.html` + `style.css` power a personal website hosted via GitHub Pages
 
 ## Repository Structure
 
-- `README.md` — The profile content displayed on GitHub (professional bio, experience, education, interests, contact info)
+- `index.html` — Main website page (professional bio, experience, education, interests, contact)
+- `style.css` — Stylesheet for the website
+- `README.md` — GitHub profile README (displayed on the GitHub profile page)
 - `CLAUDE.md` — This file; guidance for AI-assisted development
+
+## GitHub Pages
+
+- The site is served from the root of the repository
+- No build step required — plain HTML/CSS, no bundler or static site generator
+- To enable: Repository Settings > Pages > Source: Deploy from branch (`main`, root `/`)
 
 ## Conventions
 
-- The README uses GitHub-flavored Markdown
 - Keep the tone professional but approachable
-- Sections: Introduction, Experience, Topics to Explore, Education, Get in Touch
-- Use concise bullet points rather than long paragraphs
+- The website and README should stay in sync for content (experience, education, contact info)
+- HTML uses semantic elements (`<header>`, `<main>`, `<section>`, `<footer>`)
+- CSS uses custom properties (CSS variables) defined in `:root` for theming
+- The site is responsive — test changes at both desktop and mobile widths
 
 ## Editing Guidelines
 
-- Preserve the existing section order and structure unless explicitly asked to change it
+- Preserve the existing section order unless explicitly asked to change it
 - Do not remove contact information or professional details without being asked
-- Keep formatting consistent (heading levels, list styles)
-- No build steps, tests, or CI — this is a documentation-only repository
+- When adding new sections, follow the existing pattern: `<section id="...">` with an `<h2>` heading
+- Keep `README.md` and `index.html` content consistent when updating professional details
+- No build steps, tests, or CI — this is a static site
