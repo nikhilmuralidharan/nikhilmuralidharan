@@ -1,98 +1,313 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nikhil Muralidharan — Analog/Mixed-Signal Design Engineer</title>
-  <meta name="description" content="Personal website of Nikhil Muralidharan, Analog/Mixed-Signal Design Engineer based in Irvine, CA.">
+  <title>Nikhil Muralidharan — Analog Design Engineer</title>
+  <meta name="description" content="Personal website of Nikhil Muralidharan, Analog Design Engineer based in Irvine, CA. Circuit design, analysis, and projects.">
+
+  <!-- Prevent flash of wrong theme -->
+  <script>
+    try {
+      const t = localStorage.getItem('nm-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    } catch(_) {}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>Nikhil Muralidharan</h1>
-      <p class="tagline">Analog/Mixed-Signal Design Engineer &middot; Irvine, CA</p>
-      <nav>
+
+  <!-- ── Navigation ──────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Nikhil Muralidharan</a>
+      <div class="nav-links">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
-        <a href="#interests">Interests</a>
+        <a href="#skills">Skills</a>
+        <a href="/projects/">Projects</a>
+        <a href="/analysis/">Analysis</a>
+        <a href="/blog/">Blog</a>
+        <a href="/publications/">Publications</a>
         <a href="#contact">Contact</a>
-      </nav>
+      </div>
+      <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
     </div>
-  </header>
+  </nav>
 
-  <main class="container">
-    <section id="about">
-      <h2>About</h2>
-      <p>
-        I'm an Analog/Mixed-Signal Design Engineer currently working at OMNIVISION in Irvine, CA.
-        I hold an MS in Electronic Circuits &amp; Systems from UC San Diego and a BTech in ECE
-        with a CS minor from PES University. I'm passionate about pushing the boundaries of
-        analog and mixed-signal IC design.
+  <!-- ── Hero ────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <h1>Nikhil Muralidharan</h1>
+      <p class="hero-title">Analog Design Engineer</p>
+      <p class="hero-location">Irvine, California</p>
+      <p class="hero-tagline">
+        Analog Circuit and System Designer always looking for opportunities
+        to design cutting edge circuits.
       </p>
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <span class="date">Apr 2024 &mdash; Present</span>
-          <h3>Analog Design Engineer</h3>
-          <p class="org">OMNIVISION &middot; Irvine, CA</p>
-        </div>
-        <div class="timeline-item">
-          <span class="date">Jan 2023 &mdash; Apr 2024</span>
-          <h3>Graduate Student Researcher &amp; Teaching Assistant</h3>
-          <p class="org">UC San Diego</p>
-          <p>Teaching Assistant for ECE 264D &amp; ECE 166</p>
-        </div>
-        <div class="timeline-item">
-          <span class="date">Jun 2023 &mdash; Sep 2023</span>
-          <h3>RF Systems Intern</h3>
-          <p class="org">Qualcomm</p>
-        </div>
+      <div class="hero-links">
+        <a href="https://linkedin.com/in/nikhil-muralidharan" class="btn btn-primary" target="_blank" rel="noopener">
+          LinkedIn
+        </a>
+        <a href="https://github.com/nikhilmuralidharan" class="btn btn-secondary" target="_blank" rel="noopener">
+          GitHub
+        </a>
+        <a href="mailto:nikhilmuralidharan98@gmail.com" class="btn btn-secondary">
+          Email
+        </a>
+        <a href="/analysis/" class="btn btn-secondary">Circuit Analysis</a>
+        <a href="/projects/" class="btn btn-secondary">Projects</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="education">
-      <h2>Education</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h3>MS, Electronic Circuits &amp; Systems</h3>
-          <p class="org">UC San Diego &middot; GPA 3.854</p>
+  <!-- ── Main ────────────────────────────────────────────── -->
+  <main>
+    <div class="container">
+
+      <!-- About -->
+      <section id="about">
+        <div class="section-hd"><h2>About</h2></div>
+        <p style="color: var(--text-2); line-height: 1.75;">
+          I'm an Analog Design Engineer at OMNIVISION in Irvine, CA, working on
+          cutting-edge image sensor readout circuits. I hold an MS in Electronic
+          Circuits &amp; Systems from UC San Diego (GPA 3.854) and a BTech in
+          Electronics &amp; Communications Engineering from PES University (GPA 9.1).
+          My interests lie in analog and mixed-signal IC design — from low-noise
+          amplifiers and data converters to PLLs and high-speed SerDes.
+        </p>
+        <p style="color: var(--text-2); line-height: 1.75; margin-top: 0.875rem;">
+          This site is where I publish circuit analysis writeups, design projects,
+          and technical notes. Browse the
+          <a href="/analysis/">Circuit Analysis</a> and
+          <a href="/projects/">Projects</a> sections to see what I've been working on.
+        </p>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience">
+        <div class="section-hd"><h2>Experience</h2></div>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <span class="tl-date">Apr 2024 — Present</span>
+            <div class="tl-role">Analog Design Engineer</div>
+            <div class="tl-org">OMNIVISION &middot; Irvine, CA</div>
+            <div class="tl-desc">
+              Analog IC design for image sensor readout circuits.
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">Jun 2023 — Sep 2023</span>
+            <div class="tl-role">RF Systems Intern</div>
+            <div class="tl-org">Qualcomm &middot; San Diego, CA</div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">Jan 2023 — Apr 2024</span>
+            <div class="tl-role">Graduate Student Researcher &amp; Teaching Assistant</div>
+            <div class="tl-org">UC San Diego</div>
+            <div class="tl-desc">
+              Teaching Assistant for ECE 264D (Advanced Analog IC Design)
+              and ECE 166 (Microwave Systems &amp; Circuits).
+            </div>
+          </div>
+
         </div>
-        <div class="timeline-item">
-          <h3>BTech, Electronics &amp; Communications Engineering</h3>
-          <p class="org">PES University &middot; Minor in Computer Science &middot; GPA 9.1</p>
+      </section>
+
+      <!-- Education -->
+      <section id="education">
+        <div class="section-hd"><h2>Education</h2></div>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <span class="tl-date">2022 — 2024</span>
+            <div class="tl-role">MS, Electronic Circuits &amp; Systems</div>
+            <div class="tl-org">UC San Diego &middot; GPA 3.854</div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">2018 — 2022</span>
+            <div class="tl-role">BTech, Electronics &amp; Communications Engineering</div>
+            <div class="tl-org">PES University &middot; Minor in Computer Science &middot; GPA 9.1</div>
+          </div>
+
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="interests">
-      <h2>Topics I'd Like to Explore</h2>
-      <ul class="tags">
-        <li>Serdes Design</li>
-        <li>Data Converters</li>
-        <li>Phase Locked Loops</li>
-      </ul>
-    </section>
+      <!-- Skills -->
+      <section id="skills">
+        <div class="section-hd"><h2>Skills &amp; Tools</h2></div>
+        <div class="skills-grid">
 
-    <section id="contact">
-      <h2>Get in Touch</h2>
-      <ul class="contact-list">
-        <li><a href="https://linkedin.com/in/nikhil-muralidharan">LinkedIn</a></li>
-        <li><a href="mailto:nikhilmuralidharan98@gmail.com">nikhilmuralidharan98@gmail.com</a></li>
-        <li><a href="mailto:nmuralidharan@ucsd.edu">nmuralidharan@ucsd.edu</a></li>
-        <li><a href="mailto:nikhil.muralidharan@outlook.com">nikhil.muralidharan@outlook.com</a></li>
-      </ul>
-    </section>
+          <div class="skill-group">
+            <h3>Design Domains</h3>
+            <div class="tag-cloud">
+              <span class="tag">Analog IC</span>
+              <span class="tag">Mixed-Signal</span>
+              <span class="tag">RF / Wireless</span>
+              <span class="tag">Data Converters</span>
+              <span class="tag">PLLs</span>
+              <span class="tag">SerDes</span>
+              <span class="tag">LDOs</span>
+              <span class="tag">Bandgap References</span>
+              <span class="tag">Op-Amps</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>CAD Tools</h3>
+            <div class="tag-cloud">
+              <span class="tag">Cadence Virtuoso</span>
+              <span class="tag">Spectre / APS</span>
+              <span class="tag">Calibre</span>
+              <span class="tag">Assura</span>
+              <span class="tag">Ocean Script</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Languages &amp; Tools</h3>
+            <div class="tag-cloud">
+              <span class="tag">SKILL</span>
+              <span class="tag">Python</span>
+              <span class="tag">MATLAB</span>
+              <span class="tag">Verilog-A</span>
+              <span class="tag">SPICE</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3>Process Nodes</h3>
+            <div class="tag-cloud">
+              <span class="tag">65nm CMOS</span>
+              <span class="tag">28nm CMOS</span>
+              <span class="tag">FinFET</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Interests / Topics -->
+      <section id="interests">
+        <div class="section-hd"><h2>Topics I'm Exploring</h2></div>
+        <div class="tag-cloud">
+          <span class="tag">SerDes Design</span>
+          <span class="tag">High-Speed Data Converters</span>
+          <span class="tag">Phase-Locked Loops</span>
+          <span class="tag">Low-Power Analog</span>
+          <span class="tag">Noise Analysis</span>
+          <span class="tag">Frequency Compensation</span>
+        </div>
+      </section>
+
+      <!-- Featured Analysis -->
+      <section id="analysis-preview">
+        <div class="section-hd">
+          <h2>Circuit Analysis</h2>
+          <a href="/analysis/">View all &rarr;</a>
+        </div>
+        <p style="color: var(--text-2); font-size: 0.875rem; margin-bottom: 1rem;">
+          In-depth analysis of analog circuits and systems — simulations, hand calculations, and design insights.
+        </p>
+        <div id="analysis-preview-cards" class="article-grid">
+          <div class="empty-state">
+            <strong>No analyses yet</strong>
+            <p>Add a <code>.md</code> file to <code>analysis/</code> and register it in <code>analysis/manifest.json</code>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Projects -->
+      <section id="projects-preview">
+        <div class="section-hd">
+          <h2>Projects</h2>
+          <a href="/projects/">View all &rarr;</a>
+        </div>
+        <p style="color: var(--text-2); font-size: 0.875rem; margin-bottom: 1rem;">
+          IC design projects, simulation work, and personal engineering builds.
+        </p>
+        <div id="projects-preview-cards" class="article-grid">
+          <div class="empty-state">
+            <strong>No projects yet</strong>
+            <p>Add a <code>.md</code> file to <code>projects/</code> and register it in <code>projects/manifest.json</code>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="section-hd"><h2>Contact</h2></div>
+        <p style="color: var(--text-2); margin-bottom: 1.25rem;">
+          Reach out via email or connect on LinkedIn.
+        </p>
+        <div style="display: flex; gap: 0.625rem; flex-wrap: wrap;">
+          <a href="mailto:nikhilmuralidharan98@gmail.com" class="btn btn-primary">
+            nikhilmuralidharan98@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/nikhil-muralidharan" class="btn btn-secondary" target="_blank" rel="noopener">
+            LinkedIn
+          </a>
+          <a href="https://github.com/nikhilmuralidharan" class="btn btn-secondary" target="_blank" rel="noopener">
+            GitHub
+          </a>
+        </div>
+      </section>
+
+    </div><!-- /container -->
   </main>
 
+  <!-- ── Footer ──────────────────────────────────────────── -->
   <footer>
-    <div class="container">
-      <p>&copy; 2026 Nikhil Muralidharan</p>
+    <div class="footer-inner">
+      <span>&copy; 2026 Nikhil Muralidharan</span>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/nikhil-muralidharan" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/nikhilmuralidharan" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:nikhilmuralidharan98@gmail.com">Email</a>
+      </div>
     </div>
   </footer>
+
+  <script src="/js/theme.js"></script>
+  <script>
+    /* Load preview cards from manifests */
+    async function loadPreview(manifestUrl, containerId, section) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      try {
+        const res = await fetch(manifestUrl);
+        if (!res.ok) return;
+        const articles = await res.json();
+        if (!articles.length) return;
+        const preview = articles.slice(0, 3);
+        container.innerHTML = '';
+        preview.forEach(a => {
+          const card = document.createElement('a');
+          card.className = 'article-card';
+          card.href = `/article.html?src=${section}/${a.file}`;
+          card.innerHTML = `
+            <div class="article-card-title">${a.title}</div>
+            ${a.description ? `<div class="article-card-desc">${a.description}</div>` : ''}
+            <div class="article-card-meta">
+              ${a.date ? `<span>${a.date}</span>` : ''}
+              ${(a.tags||[]).length ? `<div class="card-tags">${a.tags.map(t=>`<span class="card-tag">${t}</span>`).join('')}</div>` : ''}
+            </div>`;
+          container.appendChild(card);
+        });
+      } catch (_) {}
+    }
+    loadPreview('/analysis/manifest.json', 'analysis-preview-cards', 'analysis');
+    loadPreview('/projects/manifest.json', 'projects-preview-cards', 'projects');
+  </script>
 </body>
 </html>
