@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article — Nikhil Muralidharan</title>
+
+  <!-- Prevent flash of wrong theme -->
+  <script>
+    try {
+      const t = localStorage.getItem('nm-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    } catch(_) {}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- KaTeX (math rendering) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+
+  <!-- highlight.js (code syntax highlighting) — two themes, toggled by theme.js -->
+  <link id="hljs-light" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+  <link id="hljs-dark"  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css" disabled>
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/highlight.min.js"></script>
+
+  <!-- marked.js (Markdown → HTML) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@11.2.0/marked.min.js"></script>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Nikhil Muralidharan</a>
+      <div class="nav-links">
+        <a href="/#about">About</a>
+        <a href="/#experience">Experience</a>
+        <a href="/projects/">Projects</a>
+        <a href="/analysis/">Analysis</a>
+        <a href="/blog/">Blog</a>
+        <a href="/publications/">Publications</a>
+      </div>
+      <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+    </div>
+  </nav>
+
+  <!-- ── Article container ───────────────────────────────── -->
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="breadcrumb" style="padding-top: 1.75rem;">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="#" id="bc-link"><span id="bc-section">Section</span></a>
+      <span class="breadcrumb-sep">/</span>
+      <span id="article-title-bc" style="color: var(--text-muted);">Article</span>
+    </nav>
+
+    <!-- Two-column layout: TOC sidebar + article body -->
+    <div class="article-layout">
+
+      <!-- TOC sidebar -->
+      <aside id="toc-aside">
+        <div class="article-toc">
+          <div class="toc-label">On this page</div>
+          <ul class="toc-list" id="toc-list"></ul>
+        </div>
+      </aside>
+
+      <!-- Article body -->
+      <article class="article-body">
+        <header class="article-hd">
+          <h1 id="article-title">Loading&hellip;</h1>
+          <div class="article-meta-row" id="article-meta-row"></div>
+          <div class="article-tags" id="article-tags"></div>
+        </header>
+
+        <div class="prose" id="article-content">
+          <!-- Markdown content rendered here by renderer.js -->
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <span>&copy; 2026 Nikhil Muralidharan</span>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/nikhil-muralidharan" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/nikhilmuralidharan" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:nikhilmuralidharan98@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/theme.js"></script>
+  <script src="/js/renderer.js"></script>
+  <script>
+    /* Keep breadcrumb title in sync with loaded article title */
+    const titleEl = document.getElementById('article-title');
+    const bcTitle  = document.getElementById('article-title-bc');
+    if (titleEl && bcTitle) {
+      const observer = new MutationObserver(() => {
+        bcTitle.textContent = titleEl.textContent !== 'Loading…' ? titleEl.textContent : '';
+      });
+      observer.observe(titleEl, { childList: true, characterData: true, subtree: true });
+    }
+
+    /* Apply correct hljs theme on load */
+    document.addEventListener('DOMContentLoaded', () => {
+      const theme = document.documentElement.getAttribute('data-theme') || 'light';
+      const hljsLight = document.getElementById('hljs-light');
+      const hljsDark  = document.getElementById('hljs-dark');
+      if (hljsLight) hljsLight.disabled = (theme === 'dark');
+      if (hljsDark)  hljsDark.disabled  = (theme !== 'dark');
+    });
+  </script>
+</body>
+</html>

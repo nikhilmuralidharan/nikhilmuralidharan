@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications — Nikhil Muralidharan</title>
+  <meta name="description" content="Research publications and technical papers by Nikhil Muralidharan.">
+
+  <script>
+    try {
+      const t = localStorage.getItem('nm-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    } catch(_) {}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .pub-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .pub-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.25rem 1.5rem;
+      transition: border-color var(--t);
+    }
+    .pub-item:hover { border-color: var(--border-2); }
+
+    .pub-title {
+      font-size: 0.975rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .pub-title a { color: var(--text); }
+    .pub-title a:hover { color: var(--accent); text-decoration: none; }
+
+    .pub-authors {
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      color: var(--text-2);
+    }
+    .pub-authors strong { color: var(--text); }
+
+    .pub-venue {
+      margin-top: 0.25rem;
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .pub-links {
+      margin-top: 0.65rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pub-link {
+      font-size: 0.775rem;
+      font-weight: 500;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border-2);
+      border-radius: var(--r-sm);
+      color: var(--text-2);
+      transition: all var(--t);
+    }
+    .pub-link:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Nikhil Muralidharan</a>
+      <div class="nav-links">
+        <a href="/#about">About</a>
+        <a href="/#experience">Experience</a>
+        <a href="/projects/">Projects</a>
+        <a href="/analysis/">Analysis</a>
+        <a href="/blog/">Blog</a>
+        <a href="/publications/" class="active">Publications</a>
+      </div>
+      <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="page-hd">
+        <h1>Publications</h1>
+        <p>Research papers, conference proceedings, and technical reports.</p>
+      </div>
+
+      <!-- ── Add your publications below ────────────────────
+           Template for each entry:
+
+           <div class="pub-item">
+             <div class="pub-title">
+               <a href="https://doi.org/..." target="_blank" rel="noopener">
+                 Paper Title
+               </a>
+             </div>
+             <div class="pub-authors">
+               <strong>Nikhil Muralidharan</strong>, Co-Author Name, ...
+             </div>
+             <div class="pub-venue">
+               Conference / Journal Name, Year
+             </div>
+             <div class="pub-links">
+               <a class="pub-link" href="..." target="_blank">PDF</a>
+               <a class="pub-link" href="..." target="_blank">DOI</a>
+               <a class="pub-link" href="..." target="_blank">Slides</a>
+             </div>
+           </div>
+      ────────────────────────────────────────────────────── -->
+
+      <div class="pub-list" id="pub-list">
+        <div class="empty-state">
+          <strong>No publications listed yet</strong>
+          <p>Edit <code>publications/index.html</code> to add your papers using the template in the HTML comments.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>&copy; 2026 Nikhil Muralidharan</span>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/nikhil-muralidharan" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/nikhilmuralidharan" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:nikhilmuralidharan98@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/theme.js"></script>
+</body>
+</html>

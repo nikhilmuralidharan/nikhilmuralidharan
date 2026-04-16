@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circuit Analysis — Nikhil Muralidharan</title>
+  <meta name="description" content="In-depth analog circuit analysis writeups by Nikhil Muralidharan — simulations, hand calculations, and design insights.">
+
+  <script>
+    try {
+      const t = localStorage.getItem('nm-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    } catch(_) {}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Nikhil Muralidharan</a>
+      <div class="nav-links">
+        <a href="/#about">About</a>
+        <a href="/#experience">Experience</a>
+        <a href="/projects/">Projects</a>
+        <a href="/analysis/" class="active">Analysis</a>
+        <a href="/blog/">Blog</a>
+        <a href="/publications/">Publications</a>
+      </div>
+      <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="page-hd">
+        <h1>Circuit Analysis</h1>
+        <p>In-depth analysis of analog circuits and systems — simulations, hand calculations, and design insights.</p>
+      </div>
+
+      <div id="article-list" class="article-grid">
+        <div class="empty-state">
+          <strong>No analyses yet</strong>
+          <p>
+            Copy <code>_template.md</code>, rename it, fill it in,
+            then add an entry to <code>manifest.json</code>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>&copy; 2026 Nikhil Muralidharan</span>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/nikhil-muralidharan" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/nikhilmuralidharan" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:nikhilmuralidharan98@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/theme.js"></script>
+  <script>
+    async function loadList() {
+      const container = document.getElementById('article-list');
+      try {
+        const res = await fetch('manifest.json');
+        if (!res.ok) return;
+        const articles = await res.json();
+        if (!articles.length) return;
+        container.innerHTML = '';
+        articles.forEach(a => {
+          const card = document.createElement('a');
+          card.className = 'article-card';
+          card.href = `/article.html?src=analysis/${a.file}`;
+          card.innerHTML = `
+            <div class="article-card-title">${a.title}</div>
+            ${a.description ? `<div class="article-card-desc">${a.description}</div>` : ''}
+            <div class="article-card-meta">
+              ${a.date ? `<span>${a.date}</span>` : ''}
+              ${(a.tags||[]).length
+                ? `<div class="card-tags">${a.tags.map(t=>`<span class="card-tag">${t}</span>`).join('')}</div>`
+                : ''}
+            </div>`;
+          container.appendChild(card);
+        });
+      } catch (_) {}
+    }
+    loadList();
+  </script>
+</body>
+</html>
